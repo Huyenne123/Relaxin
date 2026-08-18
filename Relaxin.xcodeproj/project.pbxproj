@@ -21,6 +21,8 @@
 		50AA10DE3012B00000065F4D /* KernelAccess/Exploit/ClearSword/exploit/utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 50AA10D53012B00000065F44 /* KernelAccess/Exploit/ClearSword/exploit/utils.c */; };
 		B1800000000000000000001F /* RelaxinPostJailbreak.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B18000000000000000000001 /* RelaxinPostJailbreak.framework */; };
 		B18000000000000000000020 /* RelaxinPostJailbreak.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B18000000000000000000001 /* RelaxinPostJailbreak.framework */; };
+		50AA10D43012B00000065F43 /* KernelAccess/Exploit/ClearSword/clear_adapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 50AA10C53012B00000065F34 /* KernelAccess/Exploit/ClearSword/clear_adapter.m */; };
+		50AA10D53012B00000065F44 /* KernelAccess/Exploit/Momentarius/mom_adapter.c in Sources */ = {isa = PBXBuildFile; fileRef = 50AA10C73012B00000065F36 /* KernelAccess/Exploit/Momentarius/mom_adapter.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,11 @@
 		50AA10D53012B00000065F44 /* KernelAccess/Exploit/ClearSword/exploit/utils.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = KernelAccess/Exploit/ClearSword/exploit/utils.c; sourceTree = SOURCE_ROOT; };
 		B18000000000000000000001 /* RelaxinPostJailbreak.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RelaxinPostJailbreak.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B18000000000000000000002 /* RelaxinLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RelaxinLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		50AA10C43012B00000065F33 /* KernelAccess/Exploit/ClearSword/clear_adapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KernelAccess/Exploit/ClearSword/clear_adapter.h; sourceTree = SOURCE_ROOT; };
+		50AA10C53012B00000065F34 /* KernelAccess/Exploit/ClearSword/clear_adapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KernelAccess/Exploit/ClearSword/clear_adapter.m; sourceTree = SOURCE_ROOT; };
+		50AA10C63012B00000065F35 /* KernelAccess/Exploit/Momentarius/mom_adapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KernelAccess/Exploit/Momentarius/mom_adapter.h; sourceTree = SOURCE_ROOT; };
+		50AA10C73012B00000065F36 /* KernelAccess/Exploit/Momentarius/mom_adapter.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = KernelAccess/Exploit/Momentarius/mom_adapter.c; sourceTree = SOURCE_ROOT; };
+		50AA10C83012B00000065F37 /* KernelAccess/Exploit/README_ADAPTERS.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = KernelAccess/Exploit/README_ADAPTERS.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */

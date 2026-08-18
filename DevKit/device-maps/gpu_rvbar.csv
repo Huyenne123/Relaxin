@@ -1,0 +1,8 @@
+device_machine,cpufamily,rvbar_pa
+A12,0x07D34B9F,
+A13,0x462504D2,
+A14/M1,0x1B588BB3,
+A15/M2,0xDA33D83D,
+A16,0x8765EDEA,
+A17,0x2876F5B5,
+# TODO: RVBAR values must be collected from the live-device GPU MMIO/IORVBar mapping for the Momentarius/ClearSword target set.

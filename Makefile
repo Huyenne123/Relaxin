@@ -131,6 +131,7 @@ test-host:
 	"$(ROOT_DIR)/DevKit/Tests/TrustCacheNoKcallKernel/run.sh"
 	$(MAKE) -C "$(ROOT_DIR)/DevKit/Tests/CopyioWindow" clean test
 	$(MAKE) -C "$(ROOT_DIR)/DevKit/Tests/PhysRWPTEWindow" clean test
+	$(MAKE) -C "$(ROOT_DIR)/DevKit/tests" clean test
 	$(MAKE) -C "$(ROOT_DIR)/DevKit/Tests/RocketRuntime" clean test
 	$(MAKE) -C "$(ROOT_DIR)/DevKit/Tests/KernelAccessFailure" clean test
 	$(MAKE) -C "$(ROOT_DIR)/DevKit/Tests/KernelOffsetTable" clean test
