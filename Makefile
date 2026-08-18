@@ -61,7 +61,7 @@ XCODEBUILD := $(XCODEBUILD_WRAPPER) \
     CODE_SIGN_IDENTITY=""
 
 .PHONY: all help print-version \
-        build build-ios lite-deb tipa ipa bootstrap-resources scan-license check test-host \
+        build build-ios lite-deb tipa ipa bootstrap-resources scan-license check test-host gpu-map \
         kernel-offsets \
         format format-lint \
         clean \
@@ -130,6 +130,7 @@ test-host:
 	"$(ROOT_DIR)/DevKit/Tests/TrustCacheNoKcallKernel/run.sh"
 	$(MAKE) -C "$(ROOT_DIR)/DevKit/Tests/CopyioWindow" clean test
 	$(MAKE) -C "$(ROOT_DIR)/DevKit/Tests/PhysRWPTEWindow" clean test
+	$(MAKE) -C "$(ROOT_DIR)/DevKit/tests" clean test
 	$(MAKE) -C "$(ROOT_DIR)/DevKit/Tests/RocketRuntime" clean test
 	$(MAKE) -C "$(ROOT_DIR)/DevKit/Tests/KernelAccessFailure" clean test
 	$(MAKE) -C "$(ROOT_DIR)/DevKit/Tests/KernelOffsetTable" clean test
@@ -137,6 +138,9 @@ test-host:
 	$(MAKE) -C "$(ROOT_DIR)/DevKit/Tests/BootstrapFinalizer" clean test
 	$(MAKE) -C "$(ROOT_DIR)/DevKit/Tests/PostJailbreakController" clean test
 	$(MAKE) -C "$(ROOT_DIR)/DevKit/Tests/InterfaceMode" clean test
+
+gpu-map:
+	$(MAKE) -C "$(ROOT_DIR)/DevKit/tests" clean test
 
 _check-bootstrap-tools:
 	@$(TOOL_CHECKER) xcode ldid zstd gtar
