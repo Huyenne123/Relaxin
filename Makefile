@@ -62,7 +62,7 @@ XCODEBUILD := $(XCODEBUILD_WRAPPER) \
 
 .PHONY: all help print-version \
         build build-ios lite-deb tipa ipa bootstrap-resources scan-license check test-host \
-        test-clearsword-discovery \
+        test-clearsword-discovery test-momentarius-discovery \
         kernel-offsets \
         format format-lint \
         clean \
@@ -92,6 +92,7 @@ help:
 	@echo "  scan-license          Refresh Licenses.txt from Vendor"
 	@echo "  check                 Validate kernel, BaseBin, and zstd contracts"
 	@echo "  test-host             Run host-side runtime and kernel contract tests"
+	@echo "  test-momentarius-discovery  Run the discovery-only Momentarius safety harness"
 	@echo ""
 	@echo "Formatting:"
 	@echo "  format                Run Swift and C-family formatters (write)"
@@ -140,9 +141,12 @@ test-host:
 	$(MAKE) -C "$(ROOT_DIR)/DevKit/Tests/PostJailbreakController" clean test
 	$(MAKE) -C "$(ROOT_DIR)/DevKit/Tests/InterfaceMode" clean test
 
-# Discovery-only smoke test for the imported ClearSword sources.
+# Discovery-only smoke tests for imported exploit sources.
 test-clearsword-discovery:
 	$(MAKE) -C "$(ROOT_DIR)/DevKit/tests" test-clearsword-discovery
+
+test-momentarius-discovery:
+	$(MAKE) -C "$(ROOT_DIR)/DevKit/Tests" test-momentarius-discovery
 
 _check-bootstrap-tools:
 	@$(TOOL_CHECKER) xcode ldid zstd gtar

@@ -1,20 +1,27 @@
-#include "mom_adapter.h"
+#!/bin/bash
+set -euo pipefail
 
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+OUT_DIR="${ROOT_DIR}/build/Tests/MomentariusDiscovery"
+mkdir -p "${OUT_DIR}"
+
+HARNESS_C="${OUT_DIR}/momentarius_discovery_harness.c"
+HARNESS_BIN="${OUT_DIR}/momentarius_discovery_harness"
+CSV_PATH="${ROOT_DIR}/DevKit/device-maps/gpu_rvbar.csv"
+DEVICE_NAME="${RELAXIN_MOMENTARIUS_DEVICE:-A12}"
+
+cat > "${HARNESS_C}" <<'EOF'
 #include <errno.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#ifndef MOMENTARIUS_ENABLED
-#define MOMENTARIUS_ENABLED 0
-#endif
-
-static int parse_u64_field(const char *text, uint64_t *out_value) {
+static int parse_u64(const char *text, uint64_t *value) {
     char *end = NULL;
     unsigned long long parsed = 0;
 
-    if (text == NULL || out_value == NULL || *text == '\0') {
+    if (text == NULL || value == NULL || *text == '\0') {
         return -1;
     }
 
@@ -24,7 +31,7 @@ static int parse_u64_field(const char *text, uint64_t *out_value) {
         return -1;
     }
 
-    *out_value = (uint64_t)parsed;
+    *value = (uint64_t)parsed;
     return 0;
 }
 
@@ -51,7 +58,7 @@ static void trim_inplace(char *text) {
     *end = '\0';
 }
 
-int device_map_lookup(const char *device_machine, uint64_t *rvbar_pa) {
+static int device_map_lookup(const char *device_machine, uint64_t *rvbar_pa) {
     static const char *paths[] = {
         "DevKit/device-maps/gpu_rvbar.csv",
         "./DevKit/device-maps/gpu_rvbar.csv",
@@ -64,7 +71,6 @@ int device_map_lookup(const char *device_machine, uint64_t *rvbar_pa) {
     }
 
     *rvbar_pa = 0;
-
     for (size_t i = 0; paths[i] != NULL; ++i) {
         FILE *fp = fopen(paths[i], "r");
         char line[256];
@@ -76,7 +82,7 @@ int device_map_lookup(const char *device_machine, uint64_t *rvbar_pa) {
         while (fgets(line, sizeof(line), fp) != NULL) {
             char *saveptr = NULL;
             char *device = NULL;
-            char *cpu_family = NULL;
+            char *cpufamily = NULL;
             char *pa_text = NULL;
             uint64_t pa = 0;
 
@@ -89,59 +95,58 @@ int device_map_lookup(const char *device_machine, uint64_t *rvbar_pa) {
             if (device == NULL) {
                 continue;
             }
-
             if (strcmp(device, "device_machine") == 0) {
                 continue;
             }
 
-            cpu_family = strtok_r(NULL, ",", &saveptr);
+            cpufamily = strtok_r(NULL, ",", &saveptr);
             pa_text = strtok_r(NULL, ",", &saveptr);
-            if (cpu_family == NULL || pa_text == NULL) {
+            if (cpufamily == NULL || pa_text == NULL) {
                 continue;
             }
 
             trim_inplace(device);
-            trim_inplace(cpu_family);
+            trim_inplace(cpufamily);
             trim_inplace(pa_text);
 
-            if (strcmp(device, device_machine) == 0 && parse_u64_field(pa_text, &pa) == 0 && pa != 0) {
+            if (strcmp(device, device_machine) == 0 && parse_u64(pa_text, &pa) == 0 && pa != 0) {
                 fclose(fp);
                 *rvbar_pa = pa;
                 return 0;
             }
         }
-
         fclose(fp);
     }
 
     return -1;
 }
 
-int momentarius_validate_device(uint32_t cpu_family) {
-    static const struct {
-        uint32_t cpu_family;
-        const char *device_machine;
-    } supported[] = {
-        { 0x07D34B9F, "A12" },
-        { 0x462504D2, "A13" },
-    };
+int main(void) {
+    const char *device = getenv("RELAXIN_MOMENTARIUS_DEVICE");
+    uint64_t rvbar_pa = 0;
+    uint64_t text_pa = 0;
 
-    for (size_t i = 0; i < sizeof(supported) / sizeof(supported[0]); ++i) {
-        uint64_t rvbar_pa = 0;
-        if (cpu_family == supported[i].cpu_family) {
-            return device_map_lookup(supported[i].device_machine, &rvbar_pa) == 0 ? 0 : -1;
-        }
+    if (device == NULL || device[0] == '\0') {
+        puts("Momentarius discovery: no device-specific target configured; skipping safely.");
+        return 0;
     }
 
-    return -1;
-}
+    if (device_map_lookup(device, &rvbar_pa) != 0) {
+        printf("Momentarius discovery: no RVBAR entry for %s in DevKit/device-maps/gpu_rvbar.csv; skipping safely.\n", device);
+        return 0;
+    }
 
-uint64_t map_phys_data_adapter(uint64_t pa, uint32_t size) {
-    (void)pa;
-    (void)size;
+    text_pa = rvbar_pa & 0xFFFFFFFFEULL;
+    printf("Momentarius discovery: %s -> RVBAR %#llx, text_pa %#llx (read-only, no writes).\n",
+           device,
+           (unsigned long long)rvbar_pa,
+           (unsigned long long)text_pa);
     return 0;
 }
+EOF
 
-void momentarius_tlb_flush_adapter(void) {
-}
+CC="${CC:-cc}"
+"${CC}" -std=c11 -Wall -Wextra -Werror -DMOMENTARIUS_ENABLED=0 \
+    -o "${HARNESS_BIN}" "${HARNESS_C}"
 
+"${HARNESS_BIN}"

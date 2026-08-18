@@ -23,6 +23,10 @@
 		B18000000000000000000020 /* RelaxinPostJailbreak.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B18000000000000000000001 /* RelaxinPostJailbreak.framework */; };
 		50AA10D43012B00000065F43 /* KernelAccess/Exploit/ClearSword/clear_adapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 50AA10C53012B00000065F34 /* KernelAccess/Exploit/ClearSword/clear_adapter.m */; };
 		50AA10D53012B00000065F44 /* KernelAccess/Exploit/Momentarius/mom_adapter.c in Sources */ = {isa = PBXBuildFile; fileRef = 50AA10C73012B00000065F36 /* KernelAccess/Exploit/Momentarius/mom_adapter.c */; };
+		50AA10E13012B00000065F51 /* KernelAccess/Exploit/Momentarius/momentarius.c in Sources */ = {isa = PBXBuildFile; fileRef = 50AA10E23012B00000065F52 /* KernelAccess/Exploit/Momentarius/momentarius.c */; };
+		50AA10E33012B00000065F53 /* KernelAccess/Exploit/Momentarius/momentarius_a12.c in Sources */ = {isa = PBXBuildFile; fileRef = 50AA10E43012B00000065F54 /* KernelAccess/Exploit/Momentarius/momentarius_a12.c */; };
+		50AA10E53012B00000065F55 /* KernelAccess/Exploit/Momentarius/momentarius_a13.c in Sources */ = {isa = PBXBuildFile; fileRef = 50AA10E43012B00000065F54 /* KernelAccess/Exploit/Momentarius/momentarius_a13.c */; };
+		50AA10E73012B00000065F57 /* KernelAccess/Exploit/Momentarius/utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 50AA10E63012B00000065F56 /* KernelAccess/Exploit/Momentarius/utils.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +98,13 @@
 		50AA10C53012B00000065F34 /* KernelAccess/Exploit/ClearSword/clear_adapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KernelAccess/Exploit/ClearSword/clear_adapter.m; sourceTree = SOURCE_ROOT; };
 		50AA10C63012B00000065F35 /* KernelAccess/Exploit/Momentarius/mom_adapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KernelAccess/Exploit/Momentarius/mom_adapter.h; sourceTree = SOURCE_ROOT; };
 		50AA10C73012B00000065F36 /* KernelAccess/Exploit/Momentarius/mom_adapter.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = KernelAccess/Exploit/Momentarius/mom_adapter.c; sourceTree = SOURCE_ROOT; };
+		50AA10E13012B00000065F51 /* KernelAccess/Exploit/Momentarius/momentarius.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KernelAccess/Exploit/Momentarius/momentarius.h; sourceTree = SOURCE_ROOT; };
+		50AA10E23012B00000065F52 /* KernelAccess/Exploit/Momentarius/momentarius.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = KernelAccess/Exploit/Momentarius/momentarius.c; sourceTree = SOURCE_ROOT; };
+		50AA10E33012B00000065F53 /* KernelAccess/Exploit/Momentarius/momentarius_a12.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = KernelAccess/Exploit/Momentarius/momentarius_a12.c; sourceTree = SOURCE_ROOT; };
+		50AA10E43012B00000065F54 /* KernelAccess/Exploit/Momentarius/momentarius_a13.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = KernelAccess/Exploit/Momentarius/momentarius_a13.c; sourceTree = SOURCE_ROOT; };
+		50AA10E53012B00000065F55 /* KernelAccess/Exploit/Momentarius/utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KernelAccess/Exploit/Momentarius/utils.h; sourceTree = SOURCE_ROOT; };
+		50AA10E63012B00000065F56 /* KernelAccess/Exploit/Momentarius/utils.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = KernelAccess/Exploit/Momentarius/utils.c; sourceTree = SOURCE_ROOT; };
+		50AA10E73012B00000065F57 /* KernelAccess/Exploit/Momentarius/README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = KernelAccess/Exploit/Momentarius/README.md; sourceTree = SOURCE_ROOT; };
 		50AA10C83012B00000065F37 /* KernelAccess/Exploit/README_ADAPTERS.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = KernelAccess/Exploit/README_ADAPTERS.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -780,6 +791,11 @@
 				50AA10DC3012B00000065F4B /* KernelAccess/Exploit/ClearSword/exploit/socket.c in Sources */,
 				50AA10DD3012B00000065F4C /* KernelAccess/Exploit/ClearSword/exploit/surface.c in Sources */,
 				50AA10DE3012B00000065F4D /* KernelAccess/Exploit/ClearSword/exploit/utils.c in Sources */,
+				50AA10D53012B00000065F44 /* KernelAccess/Exploit/Momentarius/mom_adapter.c in Sources */,
+				50AA10E13012B00000065F51 /* KernelAccess/Exploit/Momentarius/momentarius.c in Sources */,
+				50AA10E33012B00000065F53 /* KernelAccess/Exploit/Momentarius/momentarius_a12.c in Sources */,
+				50AA10E53012B00000065F55 /* KernelAccess/Exploit/Momentarius/momentarius_a13.c in Sources */,
+				50AA10E73012B00000065F57 /* KernelAccess/Exploit/Momentarius/utils.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
