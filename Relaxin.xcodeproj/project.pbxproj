@@ -10,6 +10,15 @@
 		5069C0F8301289D300065F85 /* RelaxinEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5069C0DC301289C000065F85 /* RelaxinEngine.framework */; };
 		5069C0F9301289D300065F85 /* RelaxinEngine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5069C0DC301289C000065F85 /* RelaxinEngine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		50AA10163012600000065F16 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 50AA10173012600000065F17 /* libz.tbd */; };
+		50AA10D63012B00000065F45 /* KernelAccess/Exploit/ClearSword/ClearSword.m in Sources */ = {isa = PBXBuildFile; fileRef = 50AA10C63012B00000065F35 /* KernelAccess/Exploit/ClearSword/ClearSword.m */; };
+		50AA10D73012B00000065F46 /* KernelAccess/Exploit/ClearSword/clear_adapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 50AA10C53012B00000065F34 /* KernelAccess/Exploit/ClearSword/clear_adapter.m */; };
+		50AA10D83012B00000065F47 /* KernelAccess/Exploit/ClearSword/exploit/free_thread.c in Sources */ = {isa = PBXBuildFile; fileRef = 50AA10C93012B00000065F38 /* KernelAccess/Exploit/ClearSword/exploit/free_thread.c */; };
+		50AA10D93012B00000065F48 /* KernelAccess/Exploit/ClearSword/exploit/krw.c in Sources */ = {isa = PBXBuildFile; fileRef = 50AA10CB3012B00000065F3A /* KernelAccess/Exploit/ClearSword/exploit/krw.c */; };
+		50AA10DA3012B00000065F49 /* KernelAccess/Exploit/ClearSword/exploit/phys_oob.c in Sources */ = {isa = PBXBuildFile; fileRef = 50AA10CD3012B00000065F3C /* KernelAccess/Exploit/ClearSword/exploit/phys_oob.c */; };
+		50AA10DB3012B00000065F4A /* KernelAccess/Exploit/ClearSword/exploit/poc.c in Sources */ = {isa = PBXBuildFile; fileRef = 50AA10CF3012B00000065F3E /* KernelAccess/Exploit/ClearSword/exploit/poc.c */; };
+		50AA10DC3012B00000065F4B /* KernelAccess/Exploit/ClearSword/exploit/socket.c in Sources */ = {isa = PBXBuildFile; fileRef = 50AA10D13012B00000065F40 /* KernelAccess/Exploit/ClearSword/exploit/socket.c */; };
+		50AA10DD3012B00000065F4C /* KernelAccess/Exploit/ClearSword/exploit/surface.c in Sources */ = {isa = PBXBuildFile; fileRef = 50AA10D33012B00000065F42 /* KernelAccess/Exploit/ClearSword/exploit/surface.c */; };
+		50AA10DE3012B00000065F4D /* KernelAccess/Exploit/ClearSword/exploit/utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 50AA10D53012B00000065F44 /* KernelAccess/Exploit/ClearSword/exploit/utils.c */; };
 		B1800000000000000000001F /* RelaxinPostJailbreak.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B18000000000000000000001 /* RelaxinPostJailbreak.framework */; };
 		B18000000000000000000020 /* RelaxinPostJailbreak.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B18000000000000000000001 /* RelaxinPostJailbreak.framework */; };
 /* End PBXBuildFile section */
@@ -59,6 +68,24 @@
 		50AA102A3013000000065F2A /* libchoma.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libchoma.dylib; path = build/BaseBinResources/libchoma.dylib; sourceTree = SOURCE_ROOT; };
 		50AA102B3013000000065F2B /* libjailbreak.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libjailbreak.dylib; path = build/BaseBinResources/libjailbreak.dylib; sourceTree = SOURCE_ROOT; };
 		50AA102C3013000000065F2C /* libxpf.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxpf.dylib; path = build/BaseBinResources/libxpf.dylib; sourceTree = SOURCE_ROOT; };
+		50AA10C43012B00000065F33 /* KernelAccess/Exploit/ClearSword/clear_adapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KernelAccess/Exploit/ClearSword/clear_adapter.h; sourceTree = SOURCE_ROOT; };
+		50AA10C53012B00000065F34 /* KernelAccess/Exploit/ClearSword/clear_adapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KernelAccess/Exploit/ClearSword/clear_adapter.m; sourceTree = SOURCE_ROOT; };
+		50AA10C63012B00000065F35 /* KernelAccess/Exploit/ClearSword/ClearSword.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KernelAccess/Exploit/ClearSword/ClearSword.m; sourceTree = SOURCE_ROOT; };
+		50AA10C73012B00000065F36 /* KernelAccess/Exploit/ClearSword/exploit/common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KernelAccess/Exploit/ClearSword/exploit/common.h; sourceTree = SOURCE_ROOT; };
+		50AA10C83012B00000065F37 /* KernelAccess/Exploit/ClearSword/exploit/free_thread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KernelAccess/Exploit/ClearSword/exploit/free_thread.h; sourceTree = SOURCE_ROOT; };
+		50AA10C93012B00000065F38 /* KernelAccess/Exploit/ClearSword/exploit/free_thread.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = KernelAccess/Exploit/ClearSword/exploit/free_thread.c; sourceTree = SOURCE_ROOT; };
+		50AA10CA3012B00000065F39 /* KernelAccess/Exploit/ClearSword/exploit/krw.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KernelAccess/Exploit/ClearSword/exploit/krw.h; sourceTree = SOURCE_ROOT; };
+		50AA10CB3012B00000065F3A /* KernelAccess/Exploit/ClearSword/exploit/krw.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = KernelAccess/Exploit/ClearSword/exploit/krw.c; sourceTree = SOURCE_ROOT; };
+		50AA10CC3012B00000065F3B /* KernelAccess/Exploit/ClearSword/exploit/phys_oob.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KernelAccess/Exploit/ClearSword/exploit/phys_oob.h; sourceTree = SOURCE_ROOT; };
+		50AA10CD3012B00000065F3C /* KernelAccess/Exploit/ClearSword/exploit/phys_oob.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = KernelAccess/Exploit/ClearSword/exploit/phys_oob.c; sourceTree = SOURCE_ROOT; };
+		50AA10CE3012B00000065F3D /* KernelAccess/Exploit/ClearSword/exploit/poc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KernelAccess/Exploit/ClearSword/exploit/poc.h; sourceTree = SOURCE_ROOT; };
+		50AA10CF3012B00000065F3E /* KernelAccess/Exploit/ClearSword/exploit/poc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = KernelAccess/Exploit/ClearSword/exploit/poc.c; sourceTree = SOURCE_ROOT; };
+		50AA10D03012B00000065F3F /* KernelAccess/Exploit/ClearSword/exploit/socket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KernelAccess/Exploit/ClearSword/exploit/socket.h; sourceTree = SOURCE_ROOT; };
+		50AA10D13012B00000065F40 /* KernelAccess/Exploit/ClearSword/exploit/socket.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = KernelAccess/Exploit/ClearSword/exploit/socket.c; sourceTree = SOURCE_ROOT; };
+		50AA10D23012B00000065F41 /* KernelAccess/Exploit/ClearSword/exploit/surface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KernelAccess/Exploit/ClearSword/exploit/surface.h; sourceTree = SOURCE_ROOT; };
+		50AA10D33012B00000065F42 /* KernelAccess/Exploit/ClearSword/exploit/surface.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = KernelAccess/Exploit/ClearSword/exploit/surface.c; sourceTree = SOURCE_ROOT; };
+		50AA10D43012B00000065F43 /* KernelAccess/Exploit/ClearSword/exploit/utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KernelAccess/Exploit/ClearSword/exploit/utils.h; sourceTree = SOURCE_ROOT; };
+		50AA10D53012B00000065F44 /* KernelAccess/Exploit/ClearSword/exploit/utils.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = KernelAccess/Exploit/ClearSword/exploit/utils.c; sourceTree = SOURCE_ROOT; };
 		B18000000000000000000001 /* RelaxinPostJailbreak.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RelaxinPostJailbreak.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B18000000000000000000002 /* RelaxinLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RelaxinLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -737,6 +764,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50AA10D63012B00000065F45 /* KernelAccess/Exploit/ClearSword/ClearSword.m in Sources */,
+				50AA10D73012B00000065F46 /* KernelAccess/Exploit/ClearSword/clear_adapter.m in Sources */,
+				50AA10D83012B00000065F47 /* KernelAccess/Exploit/ClearSword/exploit/free_thread.c in Sources */,
+				50AA10D93012B00000065F48 /* KernelAccess/Exploit/ClearSword/exploit/krw.c in Sources */,
+				50AA10DA3012B00000065F49 /* KernelAccess/Exploit/ClearSword/exploit/phys_oob.c in Sources */,
+				50AA10DB3012B00000065F4A /* KernelAccess/Exploit/ClearSword/exploit/poc.c in Sources */,
+				50AA10DC3012B00000065F4B /* KernelAccess/Exploit/ClearSword/exploit/socket.c in Sources */,
+				50AA10DD3012B00000065F4C /* KernelAccess/Exploit/ClearSword/exploit/surface.c in Sources */,
+				50AA10DE3012B00000065F4D /* KernelAccess/Exploit/ClearSword/exploit/utils.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
