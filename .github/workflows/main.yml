@@ -41,7 +41,25 @@ jobs:
         zstd --version
         which trustcache
         dpkg-deb --version | head -1
-
+    - name: Check Xcode project
+      run: |
+        echo "PWD: $(pwd)"
+        echo "=== Repository ==="
+        ls -la
+    
+        echo "=== Xcode project ==="
+        ls -la Relaxin.xcodeproj || true
+        ls -la Relaxin.xcodeproj/project.pbxproj || true
+    
+        echo "=== Project type ==="
+        file Relaxin.xcodeproj/project.pbxproj || true
+    
+        echo "=== Git tracked project ==="
+        git ls-files | grep -E 'Relaxin\.xcodeproj|project\.pbxproj' || true
+    
+        echo "=== Try parsing ==="
+        xcodebuild -list -project "$PWD/Relaxin.xcodeproj"
+        
     - name: Build TIPA (Dopamine UI + Relaxin RootHide)
       # APPICON_NAME= (empty): skip the Xcode 26 .icon app icon that the
       # runner's older Xcode cannot compile. Icon restored during UI rework.
