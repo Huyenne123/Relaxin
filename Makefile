@@ -61,7 +61,8 @@ XCODEBUILD := $(XCODEBUILD_WRAPPER) \
     CODE_SIGN_IDENTITY=""
 
 .PHONY: all help print-version \
-        build build-ios lite-deb tipa ipa bootstrap-resources scan-license check test-host gpu-map \
+        build build-ios lite-deb tipa ipa bootstrap-resources scan-license check test-host \
+        test-clearsword-discovery \
         kernel-offsets \
         format format-lint \
         clean \
@@ -139,8 +140,9 @@ test-host:
 	$(MAKE) -C "$(ROOT_DIR)/DevKit/Tests/PostJailbreakController" clean test
 	$(MAKE) -C "$(ROOT_DIR)/DevKit/Tests/InterfaceMode" clean test
 
-gpu-map:
-	$(MAKE) -C "$(ROOT_DIR)/DevKit/tests" clean test
+# Discovery-only smoke test for the imported ClearSword sources.
+test-clearsword-discovery:
+	$(MAKE) -C "$(ROOT_DIR)/DevKit/tests" test-clearsword-discovery
 
 _check-bootstrap-tools:
 	@$(TOOL_CHECKER) xcode ldid zstd gtar
