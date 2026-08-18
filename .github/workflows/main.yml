@@ -1,0 +1,61 @@
+name: Build Relaxin TIPA
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: macos-15
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: |
+        brew install ldid zstd gnu-tar ripgrep dpkg make libmd
+        # trustcache: CRKatri's C tool, built from source (links -lmd from libmd)
+        git clone --depth 1 https://github.com/CRKatri/trustcache /tmp/trustcache
+        export C_INCLUDE_PATH="$(brew --prefix libmd)/include"
+        export LIBRARY_PATH="$(brew --prefix libmd)/lib"
+        make -C /tmp/trustcache
+        sudo make -C /tmp/trustcache install PREFIX=/usr/local
+
+    - name: Select latest Xcode
+      run: |
+        echo "=== Available Xcode versions ==="
+        ls -d /Applications/Xcode_*.app 2>/dev/null || ls /Applications | grep -i xcode
+        LATEST="$(ls -d /Applications/Xcode_*.app 2>/dev/null | sort -V | tail -1)"
+        if [ -n "$LATEST" ]; then
+          echo "Selecting: $LATEST"
+          sudo xcode-select -s "$LATEST/Contents/Developer"
+        fi
+
+    - name: Check environment
+      run: |
+        xcodebuild -version
+        swift --version
+        which ldid
+        zstd --version
+        which trustcache
+        dpkg-deb --version | head -1
+
+    - name: Build TIPA (Dopamine UI + Relaxin RootHide)
+      # APPICON_NAME= (empty): skip the Xcode 26 .icon app icon that the
+      # runner's older Xcode cannot compile. Icon restored during UI rework.
+      run: make tipa APPICON_NAME=
+
+    - name: Upload TIPA artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: relaxin-tipa
+        path: build/Artifacts/*.tipa
+        retention-days: 30
+
+    - name: Create Release
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: build/Artifacts/*.tipa
